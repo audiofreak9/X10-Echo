@@ -3,7 +3,7 @@ PHP code that can be run on a Linux PC to interface with HEYU, intended to be us
 
 This repository is for my Amazon Echo X10 Home Control tutorial found here http://coreyswrite.com/tips-tricks/amazon-echo-x10-home-control/.  
 
-This file 'provides on/off/dim X10 capability.
+This file provides on/off/dim X10 capability.
 
 Prerequisites for this to function include: 
 <ul>
