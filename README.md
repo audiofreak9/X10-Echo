@@ -1,7 +1,9 @@
 # X10-Echo
 PHP code that can be run on a Linux PC to interface with HEYU, intended to be used with BWS System's <a href="https://github.com/bwssytems/ha-bridge">ha-bridge</a> for an Amazon Echo interface.
 
-This repository is for my Amazon Echo X10 Home Control tutorial found here http://coreyswrite.com/tips-tricks/amazon-echo-x10-home-control/.  This file 'echo.php' provides on/off/dim X10 capability, used in my tutorial.
+This repository is for my Amazon Echo X10 Home Control tutorial found here http://coreyswrite.com/tips-tricks/amazon-echo-x10-home-control/.  
+
+This file 'provides on/off/dim X10 capability.
 
 Prerequisites for this to function include: 
 <ul>
