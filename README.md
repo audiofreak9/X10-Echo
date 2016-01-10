@@ -7,7 +7,7 @@ This file provides on/off/dim X10 capability.
 
 Prerequisites for this to function include: 
 <ul>
-  <li>Linux box with Heyu (http://www.heyu.org/) installed</li>, preferably a Raspberry Pi
+  <li>Linux box with Heyu (http://www.heyu.org/) installed, preferably a Raspberry Pi</li>
   <li>Apache installed</li>
   <li>PHP installed</li>
 </ul>
