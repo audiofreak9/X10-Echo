@@ -24,7 +24,7 @@ URL variables include:
 </ul>
 
 Usage in a browser:
-http://<Your RPi's IP>/echo.php?action=on&hu=M2&percent=${intensity.percent}
+http://&lt;Your RPi's IP&gt;/echo.php?action=on&hu=M2&percent=${intensity.percent}
 
 Usage with the Amazon Echo:
 "Alexa, dim the kitchen lights to 50%"
