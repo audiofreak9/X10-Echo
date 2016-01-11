@@ -5,7 +5,7 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
 
 Prerequisites for this to function include:
 <ul>
-  <li>Linux box with Heyu (http://www.heyu.org/) installed, preferably a Raspberry Pi</li>
+  <li>Linux box with <a href="http://www.heyu.org/">HEYU</a> installed, preferably a Raspberry Pi</li>
   <li>Apache installed</li>
   <li>PHP installed</li>
 </ul>
