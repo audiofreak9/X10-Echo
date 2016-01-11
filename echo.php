@@ -4,7 +4,7 @@ $command = "heyu -c /home/pi/.heyu/x10config ";
 $echo = "Error: No variables!";
 if (!$action) $action = "off";
 if (isset($hu)) {
-	$echo = "Echo! ";
+	$echo = "X10 Echo!<br />";
 	if ((isset($percent)) && (is_numeric($percent)) && ($percent >= 1)) {
 		$level = ceil(22 - (22 / 100 * $percent)) == 0 ? 1 : ceil(22 - (22 / 100 * $percent));
 		$command .= "obdim " . $hu . " " . $level;
