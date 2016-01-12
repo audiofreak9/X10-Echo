@@ -20,7 +20,7 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
 <h3>Variables</h3>
 <ul>
   <li>action &lt;on|off&gt;  Off set as default action.</li>
-  <li>hu &lt;any&gt;  X10 house unit, example M2.</li>
+  <li>hu &lt;any&gt;  X10 house unit.</li>
   <li>percent &lt;0-99&gt; (OPTIONAL)  If set, action will be set to obdim.</li>
 </ul>
 
