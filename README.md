@@ -3,28 +3,38 @@ PHP code used in my <a href="http://coreyswrite.com/tips-tricks/amazon-echo-x10-
 
 This file provides on/off/dim X10 capability from both a URL or by voice command using an Amazon Echo.
 
-Prerequisites for this to function include:
+<h3>Prerequisite components</h3>
 <ul>
-  <li>Linux box with <a href="http://www.heyu.org/">HEYU</a> installed, preferably a Raspberry Pi</li>
+  <li>Linux box, preferably a Raspberry Pi</li>
+  <li><a href="http://www.heyu.org/">HEYU</a> installed</li>
   <li>Apache installed</li>
   <li>PHP installed</li>
 </ul>
 
-Optional components for this file include:
+<h3>Optional components</h3>
 <ul>
-  <li>BWS Systems <a href="https://github.com/bwssytems/ha-bridge">ha-bridge</a> installed on the same Linux Box</li>
+  <li>BWS Systems <a href="https://github.com/bwssytems/ha-bridge">ha-bridge</a> installed</li>
   <li>An <a href="http://amazon.com/echo">Amazon Echo</a></li>
 </ul>
 
-URL variables include:
+<h3>Variables</h3>
 <ul>
-  <li>action (on/off)  Will be set to obdim IF the percent variable is set.</li>
-  <li>hu (X10 house unit - any) EXAMPLE: M2</li>
-  <li>percent (dim level 0-99%) **OPTIONAL**  Used only if set in the URL.  Intended to come from the Amazon Echo by way of the ha-bridge which sets it as ${intensity.percent}</li>
+  <li>action &lt;on|off&gt;  Off set as default action.</li>
+  <li>hu &lt;any&gt;  X10 house unit, example M2.</li>
+  <li>percent &lt;0-99&gt; (OPTIONAL)  If set, action will be set to obdim.  Comes from the Amazon Echo by way of the ha-bridge set as ${intensity.percent}</li>
 </ul>
 
-Usage in a browser:
-http://&lt;Your RPi's IP&gt;/echo.php?action=on&hu=M2&percent=${intensity.percent}
+<h3>Browser Usage</h3>
+<ul>
+  <li>On URL: http://&lt;ip address&gt;/echo.php?action=on&hu=M2</li>
+  <li>Off URL: http://&lt;ip address&gt;/echo.php?action=off&hu=M2</li>
+  <li>Dim URL: http://&lt;ip address&gt;/echo.php?action=on&hu=M2&percent=50</li>
+  <li>Shorthand Off URL: http://&lt;ip address&gt;/echo.php?hu=M2</li>
+</ul>
 
-Usage with the Amazon Echo:
-"Alexa, dim the kitchen lights to 50%"
+<h3>Amazon Echo Usage</h3>
+<ul>
+  <li>"Alexa, turn on the kitchen lights"</li>
+  <li>"Alexa, turn off the kitchen lights"</li>
+  <li>"Alexa, dim the kitchen lights to 50%"</li>
+</ul>
