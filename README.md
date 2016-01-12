@@ -21,7 +21,7 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
 <ul>
   <li>action &lt;on|off&gt;  Off set as default action.</li>
   <li>hu &lt;any&gt;  X10 house unit, example M2.</li>
-  <li>percent &lt;0-99&gt; (OPTIONAL)  If set, action will be set to obdim.  Comes from the Amazon Echo by way of the ha-bridge set as ${intensity.percent}</li>
+  <li>percent &lt;0-99&gt; (OPTIONAL)  If set, action will be set to obdim.</li>
 </ul>
 
 <h3>Browser Usage</h3>
