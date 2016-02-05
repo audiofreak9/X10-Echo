@@ -26,18 +26,18 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
 
 <h3>Browser Usage</h3>
 <ul>
-  <li>On URL: http://&lt;ip address&gt;/echo.php?action=on&hu=M2</li>
-  <li>Off URL: http://&lt;ip address&gt;/echo.php?action=off&hu=M2</li>
-  <li>Dim URL: http://&lt;ip address&gt;/echo.php?action=on&hu=M2&percent=50</li>
-  <li>Shorthand Off URL: http://&lt;ip address&gt;/echo.php?hu=M2</li>
+  <li>On URL: http://&lt;ip address&gt;/echo.php?action=on&hu=&lt;HU&gt;</li>
+  <li>Off URL: http://&lt;ip address&gt;/echo.php?action=off&hu=&lt;HU&gt;</li>
+  <li>Dim URL: http://&lt;ip address&gt;/echo.php?action=on&hu=&lt;HU&gt;&percent=50</li>
+  <li>Shorthand Off URL: http://&lt;ip address&gt;/echo.php?hu=&lt;HU&gt;</li>
 </ul>
 
 <h3>ha-bridge Usage</h3>
 <ul>
-  <li>On URL: http://&lt;ip address&gt;/echo.php?action=on&hu=M2</li>
-  <li>Off URL: http://&lt;ip address&gt;/echo.php?action=off&hu=M2</li>
-  <li>Dim URL: http://&lt;ip address&gt;/echo.php?action=on&hu=M2&percent=${intensity.percent}</li>
-  <li>Shorthand Off URL: http://&lt;ip address&gt;/echo.php?hu=M2</li>
+  <li>On URL: http://&lt;ip address&gt;/echo.php?action=on&hu=&lt;HU&gt;</li>
+  <li>Off URL: http://&lt;ip address&gt;/echo.php?action=off&hu=&lt;HU&gt;</li>
+  <li>Dim URL: http://&lt;ip address&gt;/echo.php?action=on&hu=&lt;HU&gt;&percent=${intensity.percent}</li>
+  <li>Shorthand Off URL: http://&lt;ip address&gt;/echo.php?hu=M2&lt;HU&gt;</li>
 </ul>
 
 <h3>Amazon Echo Voice Usage</h3>
