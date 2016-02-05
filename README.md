@@ -37,7 +37,7 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
   <li>On URL: http://&lt;ip address&gt;/echo.php?action=on&hu=&lt;HU&gt;</li>
   <li>Off URL: http://&lt;ip address&gt;/echo.php?action=off&hu=&lt;HU&gt;</li>
   <li>Dim URL: http://&lt;ip address&gt;/echo.php?action=on&hu=&lt;HU&gt;&percent=${intensity.percent}</li>
-  <li>Shorthand Off URL: http://&lt;ip address&gt;/echo.php?hu=M2&lt;HU&gt;</li>
+  <li>Shorthand Off URL: http://&lt;ip address&gt;/echo.php?hu=&lt;HU&gt;</li>
 </ul>
 
 <h3>Amazon Echo Voice Usage</h3>
