@@ -17,6 +17,15 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
   <li>An <a href="http://amazon.com/echo">Amazon Echo</a></li>
 </ul>
 
+<h3>Installation</h3>
+<ul>
+  <li>Must be cloned into an empty directory</li>
+  <li>$ cd /var/www/html/</li>
+  <li>$ ls -l</li>
+  <li>Remove all listed files</li>
+  <li>$ sudo git clone https://github.com/audiofreak9/X10-Echo .</li>
+</ul>
+
 <h3>Variables</h3>
 <ul>
   <li>action &lt;on|off&gt;  Off set as default action.</li>
