@@ -55,3 +55,8 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
   <li>"Alexa, turn off the kitchen lights"</li>
   <li>"Alexa, dim the kitchen lights to 50%"</li>
 </ul>
+
+<h3>X10 Control Interface</h3>
+<ul>
+  <li>http://&lt;ip address&gt;</li>
+</ul>
