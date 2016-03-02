@@ -57,6 +57,7 @@ This file provides on/off/dim X10 capability from both a URL or by voice command
 </ul>
 
 <h3>X10 Control Interface</h3>
+<p>(This requires the BWS Systems <a href="https://github.com/bwssytems/ha-bridge">ha-bridge</a> installed)</p>
 <ul>
-  <li>http://&lt;ip address&gt;  (This requires the BWS Systems <a href="https://github.com/bwssytems/ha-bridge">ha-bridge</a> installed)</li>
+  <li>http://&lt;ip address&gt;</li>
 </ul>
