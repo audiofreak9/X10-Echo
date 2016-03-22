@@ -1,26 +1,3 @@
-<?php
-extract($_POST);
-$page = basename($_SERVER['PHP_SELF']);
-$heyuvar = "heyu -c /home/pi/.heyu/x10config ";
-$heyuend = " > /dev/null 2>/dev/null &";
-if((isset($hu)) && (isset($action))) {
-        if (is_numeric($action)) {
-                $level = (22 - round($action * (22 / 100)) == 0) ? 1 : 22 - round($action * (22 / 100));
-                $heyuvar .= 'obdim ' . $hu . ' ' . $level . $heyuend;
-        }else{
-                $heyuvar .= $action . ' ' . $hu . $heyuend;
-        }
-        exec($heyuvar);
-        header("Location: /" . $page);
-        exit;
-}
-if (isset($sc)) {
-        $heyuvar .= $sc . $heyuend;
-        exec($heyuvar);
-        header("Location: /" . $page);
-        exit;
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,6 +12,9 @@ if (isset($sc)) {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-responsive.css">
 <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+<style>
+body{margin:0;padding:10px 0 0 0}
+</style>
 </head>
 <body>
 <div class="container container-fluid" role="main">
@@ -46,21 +26,21 @@ if (isset($sc)) {
 <?php
 $SN = $_SERVER['SERVER_NAME'];
 $ha_devices = json_decode(file_get_contents("http://$SN:8080/api/devices"), true);
-for ($x = 0; $x <= count($ha_devices) - 1; $x++) if (strpos($ha_devices[$x]["onUrl"],"echo.php") > 0) $ha_vals[] = $x;
+//for ($x = 0; $x <= count($ha_devices) - 1; $x++) if (strpos($ha_devices[$x]["onUrl"],"echo.php") > 0) $ha_vals[] = $x;
+for ($x = 0; $x <= count($ha_devices) - 1; $x++) $ha_vals[] = $x;
 $halfval = ceil(count($ha_vals) / 2);
 foreach ($ha_vals as $ha_val) {
         $find = array("http:","localhost","/",$SN,"echo.php?","action", "=", "off", "on","&","hu","percent", "$","{","intensity",".","percent","}");
         $HU = str_replace($find, "", $ha_devices[$ha_val]["onUrl"]);
-        $get_level = $heyuvar . 'dimlevel ' . $HU;
-        $dev_level = trim(shell_exec($get_level));
+        $dev_level = round(($ha_devices[$ha_val]["deviceSetValue"] / 255)*100);
 ?>
-                                        <form class="form-inline" id="form<?php echo $HU; ?>" method="post">
+                                        <form class="form-inline" id="<?php echo $ha_devices[$ha_val]["id"]; ?>" method="post">
                                         <input type="hidden" name="hu" value="<?php echo $HU; ?>" />
                                         <button type="submit" class="btn btn-sm1 btn-success" name="action" value="on">On</button>
                                         <button type="submit" class="btn btn-sm1 btn-danger" name="action" value="off">Off</button>
 <?php
         if (strpos($ha_devices[$ha_val]["onUrl"],"percent") > 0) {
-                for ($x = 30; $x < 100; $x+=10) { 
+                for ($x = 30; $x < 100; $x+=10) {
 ?>
                                         <button type="submit" class="btn btn-sm1 btn-default" name="action" value="<?php echo $x; ?>"><?php echo $x; ?></button>
 <?php
@@ -72,7 +52,7 @@ foreach ($ha_vals as $ha_val) {
                                                 <div class="col-xs-3 label label-info"><?php echo ucwords($ha_devices[$ha_val]["name"]); ?></div>
                                                 <div class="col-xs-9">
                                                         <div class="progress">
-                                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $dev_level; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $dev_level; ?>%">
+                                                                <div class="progress-bar progress-bar-success" id="prog<?php echo $ha_devices[$ha_val]["id"]; ?>" role="progressbar" aria-valuenow="<?php echo $dev_level; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $dev_level; ?>%">
                                                                         <?php echo ' ' . $dev_level . '% '; ?>
                                                                 </div>
                                                         </div>
@@ -100,5 +80,41 @@ foreach ($ha_vals as $ha_val) {
 </div>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js?ver=CDN"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script>
+$(".btn").click(function() {
+  var dev_id = $(this).closest("form").attr('id');
+  var dev_val = $(this).attr('value');
+  var data = '{"on":';
+  if(dev_val == "off") {
+    percent = 0;
+    data += 'false';
+  }else{
+    percent = 100;
+    data += 'true';
+  }
+  if(isNumeric(dev_val)){
+    percent = dev_val;
+    data += ', "bri":' + Math.round(2.55 * dev_val);
+  }
+  data += '}';
+  $.ajax({
+    type: 'POST',
+    dataType: 'json',
+    url: 'http://<?php echo $SN; ?>:8080/api/c/lights/' + dev_id + '/state',
+    headers: {"X-HTTP-Method-Override": "PUT"},
+    data: data,
+    success : updateProgress(percent, dev_id)
+  });
+  return false;
+});
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+function updateProgress(percent, dev_id){
+    if(percent > 100) percent = 100;
+    $('#prog' + dev_id).css('width', percent+'%');
+    $('#prog' + dev_id).html(percent+'%');
+}
+</script>
 </body>
 </html>
