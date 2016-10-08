@@ -1,10 +1,10 @@
 <?php
 extract($_GET);
 $command = "heyu -c /home/pi/.heyu/x10config ";
-$echo = "Error: No variables!";
+$echo = "Error: House Unit not set!";
 if (!$action) $action = "off";
 if (isset($hu)) {
-	$echo = "X10 Echo!";
+	$echo = "Echo -> X10!";
 	if ((isset($percent)) && (is_numeric($percent)) && ($percent >= 1)) {
 		$level = ceil(22 - (22 / 100 * $percent)) == 0 ? 1 : ceil(22 - (22 / 100 * $percent));
 		$command .= "obdim " . $hu . " " . $level;
